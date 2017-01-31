@@ -1,1 +1,9 @@
 c:\users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\bin\Debug\SENG403_AlarmClock.exe.config
+c:\users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\bin\Debug\SENG403_AlarmClock.exe
+c:\users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\bin\Debug\SENG403_AlarmClock.pdb
+c:\users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.csprojResolveAssemblyReference.cache
+c:\users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.Form1.resources
+c:\users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.Properties.Resources.resources
+c:\users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.csproj.GenerateResource.Cache
+c:\users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.exe
+c:\users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.pdb
