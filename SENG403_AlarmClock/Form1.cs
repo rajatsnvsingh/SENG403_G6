@@ -23,7 +23,12 @@ namespace SENG403_AlarmClock
         }
 
         public void foo()
+        {//test push
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
+
         }
     }
 }
