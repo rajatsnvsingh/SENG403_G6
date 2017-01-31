@@ -21,5 +21,9 @@ namespace SENG403_AlarmClock
         {
             this.label1.Text = DateTime.Now.ToString("h:mm:ss tt");
         }
+
+        public void foo()
+        {
+        }
     }
 }
