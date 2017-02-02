@@ -29,33 +29,53 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.currentTimeDisplay = new System.Windows.Forms.Label();
+            this.mainTimer = new System.Windows.Forms.Timer(this.components);
+            this.alarmTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.setAlarmButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // currentTimeDisplay
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.currentTimeDisplay.AutoSize = true;
+            this.currentTimeDisplay.Location = new System.Drawing.Point(0, 0);
+            this.currentTimeDisplay.Name = "currentTimeDisplay";
+            this.currentTimeDisplay.Size = new System.Drawing.Size(46, 17);
+            this.currentTimeDisplay.TabIndex = 0;
+            this.currentTimeDisplay.Text = "label1";
             // 
-            // timer1
+            // mainTimer
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.mainTimer.Enabled = true;
+            this.mainTimer.Interval = 1000;
+            this.mainTimer.Tick += new System.EventHandler(this.mainTimerTick);
+            // 
+            // alarmTimePicker
+            // 
+            this.alarmTimePicker.Location = new System.Drawing.Point(3, 37);
+            this.alarmTimePicker.Name = "alarmTimePicker";
+            this.alarmTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.alarmTimePicker.TabIndex = 1;
+            // 
+            // setAlarmButton
+            // 
+            this.setAlarmButton.Location = new System.Drawing.Point(12, 76);
+            this.setAlarmButton.Name = "setAlarmButton";
+            this.setAlarmButton.Size = new System.Drawing.Size(75, 23);
+            this.setAlarmButton.TabIndex = 2;
+            this.setAlarmButton.Text = "OK";
+            this.setAlarmButton.UseVisualStyleBackColor = true;
+            this.setAlarmButton.Click += new System.EventHandler(this.setAlarmButton_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(212, 206);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClientSize = new System.Drawing.Size(283, 254);
+            this.Controls.Add(this.setAlarmButton);
+            this.Controls.Add(this.alarmTimePicker);
+            this.Controls.Add(this.currentTimeDisplay);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -66,8 +86,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label currentTimeDisplay;
+        private System.Windows.Forms.Timer mainTimer;
+        private System.Windows.Forms.DateTimePicker alarmTimePicker;
+        private System.Windows.Forms.Button setAlarmButton;
     }
 }
 
