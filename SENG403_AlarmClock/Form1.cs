@@ -70,7 +70,7 @@ namespace SENG403_AlarmClock
         {
             AlarmActivatedLabel.Visible = false;
             snoozeButton.Visible = false;
-           // alarm.Snooze();
+            alarm.Snooze(DateTime.Now);
         }
     }
 
