@@ -17,13 +17,4 @@ C:\Users\alexander.thompson\Source\Repos\403Clock\SENG403_AlarmClock\obj\Debug\S
 C:\Users\alexander.thompson\Source\Repos\403Clock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.Properties.Resources.resources
 C:\Users\alexander.thompson\Source\Repos\403Clock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.csproj.GenerateResource.Cache
 C:\Users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.Form2.resources
-C:\Users\Owner\Source\Repos\SENG403_G6\SENG403_AlarmClock\bin\Debug\SENG403_AlarmClock.exe.config
-C:\Users\Owner\Source\Repos\SENG403_G6\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.exe
-C:\Users\Owner\Source\Repos\SENG403_G6\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.pdb
-C:\Users\Owner\Source\Repos\SENG403_G6\SENG403_AlarmClock\bin\Debug\SENG403_AlarmClock.exe
-C:\Users\Owner\Source\Repos\SENG403_G6\SENG403_AlarmClock\bin\Debug\SENG403_AlarmClock.pdb
-C:\Users\Owner\Source\Repos\SENG403_G6\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.csprojResolveAssemblyReference.cache
-C:\Users\Owner\Source\Repos\SENG403_G6\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.Form1.resources
-C:\Users\Owner\Source\Repos\SENG403_G6\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.Form2.resources
-C:\Users\Owner\Source\Repos\SENG403_G6\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.Properties.Resources.resources
-C:\Users\Owner\Source\Repos\SENG403_G6\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.csproj.GenerateResource.Cache
+C:\Users\alexander.thompson\Source\Repos\403Clock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.Form2.resources

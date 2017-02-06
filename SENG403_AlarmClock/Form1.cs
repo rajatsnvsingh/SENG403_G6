@@ -14,7 +14,7 @@ namespace SENG403_AlarmClock
 {
     public partial class Form1 : Form
     {
-        DateTime? alarmTime = null;
+        Alarm alarm = new Alarm();
         Form2 popup = new Form2();
 
         public Form1()
@@ -28,10 +28,10 @@ namespace SENG403_AlarmClock
         private void mainTimerTick(object sender, EventArgs e)
         {
             this.currentTimeDisplay.Text = DateTime.Now.ToString("h:mm:ss tt");
-            if (alarmTime != null && DateTime.Now.CompareTo(alarmTime) > 0)
+            if (alarm.GetTime() != null && DateTime.Now.CompareTo(alarm.GetTime()) > 0)
             {
-                alarmTime = null;
-                new Form2().ShowDialog();
+                alarm.Cancel();
+                new Form2(alarm).ShowDialog();
             }
         }
 
@@ -42,17 +42,7 @@ namespace SENG403_AlarmClock
 
         private void setAlarmButton_Click(object sender, EventArgs e)
         {
-            alarmTime = alarmTimePicker.Value.Date + alarmTimePicker.Value.TimeOfDay;
-            if ((setAlarmButton.Text == "Set Alarm") && alarmTime.HasValue)
-            {
-                setAlarmButton.Text = "Alarm Set";
-            }
-        }
-
-        private void cancelAlarmButton_Click(object sender, EventArgs e)
-        {
-            alarmTime = null;
-            setAlarmButton.Text = "Set Alarm";
+            alarm.SetTime(alarmTimePicker.Value.Date + alarmTimePicker.Value.TimeOfDay);
         }
     }
 

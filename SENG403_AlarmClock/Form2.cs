@@ -12,6 +12,12 @@ namespace SENG403_AlarmClock
 {
     public partial class Form2 : Form
     {
+        Alarm alarm;
+        public Form2(Alarm passedAlarm)
+        {
+            this.alarm = passedAlarm;
+            InitializeComponent();
+        }
         public Form2()
         {
             InitializeComponent();
@@ -20,6 +26,11 @@ namespace SENG403_AlarmClock
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            alarm.Snooze();
         }
     }
 }
