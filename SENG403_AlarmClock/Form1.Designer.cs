@@ -42,7 +42,7 @@
             // 
             this.currentTimeDisplay.AutoSize = true;
             this.currentTimeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentTimeDisplay.Location = new System.Drawing.Point(520, 104);
+            this.currentTimeDisplay.Location = new System.Drawing.Point(368, 79);
             this.currentTimeDisplay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentTimeDisplay.Name = "currentTimeDisplay";
             this.currentTimeDisplay.Size = new System.Drawing.Size(299, 108);
@@ -70,7 +70,7 @@
             this.setAlarmButton.Location = new System.Drawing.Point(722, 329);
             this.setAlarmButton.Margin = new System.Windows.Forms.Padding(2);
             this.setAlarmButton.Name = "setAlarmButton";
-            this.setAlarmButton.Size = new System.Drawing.Size(161, 43);
+            this.setAlarmButton.Size = new System.Drawing.Size(179, 43);
             this.setAlarmButton.TabIndex = 2;
             this.setAlarmButton.Text = "Set Alarm";
             this.setAlarmButton.UseVisualStyleBackColor = true;
