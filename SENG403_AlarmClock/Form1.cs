@@ -43,11 +43,16 @@ namespace SENG403_AlarmClock
         private void setAlarmButton_Click(object sender, EventArgs e)
         {
             alarmTime = alarmTimePicker.Value.Date + alarmTimePicker.Value.TimeOfDay;
+            if ((setAlarmButton.Text == "Set Alarm") && alarmTime.HasValue)
+            {
+                setAlarmButton.Text = "Alarm Set";
+            }
         }
 
         private void cancelAlarmButton_Click(object sender, EventArgs e)
         {
             alarmTime = null;
+            setAlarmButton.Text = "Set Alarm";
         }
     }
 
