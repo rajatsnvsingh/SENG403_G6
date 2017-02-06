@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,12 +12,24 @@ namespace SENG403_AlarmClock
         private DateTime? time;
         private DateTime? defaultTime;
         private double snoozeTime;
+        SoundPlayer alarmSound;
 
-        public Alarm()
+        public Alarm(String alarmFile)
         {
             this.time = null;
             this.defaultTime = null;
+            alarmSound = new SoundPlayer(alarmFile);
             snoozeTime = 0.1;
+        }
+
+        public void play()
+        {
+            alarmSound.Play();
+        }
+
+        public void stop()
+        {
+            alarmSound.Stop();
         }
 
         public Alarm(Alarm newAlarm)
@@ -28,18 +41,22 @@ namespace SENG403_AlarmClock
         public void SetTime(DateTime newTime)
         {
             this.defaultTime = newTime;
-            this.time = this.defaultTime;        }
+            this.time = this.defaultTime;
+        }
 
-        public void Snooze(DateTime? currentTime)
+        public void setSnooze(double snoozeMinutes)
         {
-            if (time.HasValue) {
-                this.time = currentTime.Value.AddMinutes(snoozeTime);
-            }
+            this.snoozeTime = snoozeMinutes;
+        }
+
+        public void Snooze(DateTime currentTime)
+        {
+            this.time = currentTime.AddMinutes(snoozeTime);
         }
 
         public void Cancel()
         {
-            this.time = this.defaultTime;
+            this.time = null;
         }
 
         public DateTime? GetTime()

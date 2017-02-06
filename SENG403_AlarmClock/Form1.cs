@@ -14,8 +14,9 @@ namespace SENG403_AlarmClock
 {
     public partial class Form1 : Form
     {
-        Alarm alarm = new Alarm();
+        Alarm alarm = new Alarm("../../alarm.wav");
         Form2 popup = new Form2();
+        
 
         public Form1()
         {
@@ -28,9 +29,10 @@ namespace SENG403_AlarmClock
         private void mainTimerTick(object sender, EventArgs e)
         {
             this.currentTimeDisplay.Text = DateTime.Now.ToString("h:mm:ss tt");
-            if (alarm.GetTime() != null && DateTime.Now.CompareTo(alarm.GetTime()) > 0)
+            if (alarm.GetTime() != null && DateTime.Now.CompareTo(alarm.GetTime()) >= 0)
             {
                 alarm.Cancel();
+                alarm.play();
                 AlarmActivatedLabel.Visible = true;
                 snoozeButton.Visible = true;
                 if (setAlarmButton.Text == "Alarm Set")
@@ -43,8 +45,8 @@ namespace SENG403_AlarmClock
         private void Form1_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
+            
+            
 
         }
 
@@ -60,7 +62,10 @@ namespace SENG403_AlarmClock
         private void cancelAlarmButton_Click(object sender, EventArgs e)
         {
             alarm.Cancel();
-            if(setAlarmButton.Text == "Alarm Set")
+            AlarmActivatedLabel.Visible = false;
+            snoozeButton.Visible = false;
+            alarm.stop();
+            if (setAlarmButton.Text == "Alarm Set")
             {
                 setAlarmButton.Text = "Set Alarm";
             }
@@ -71,6 +76,7 @@ namespace SENG403_AlarmClock
             AlarmActivatedLabel.Visible = false;
             snoozeButton.Visible = false;
             alarm.Snooze(DateTime.Now);
+            alarm.stop();
         }
     }
 
