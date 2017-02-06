@@ -31,7 +31,8 @@ namespace SENG403_AlarmClock
             if (alarm.GetTime() != null && DateTime.Now.CompareTo(alarm.GetTime()) > 0)
             {
                 alarm.Cancel();
-                new Form2(alarm).ShowDialog();
+                AlarmActivatedLabel.Visible = true;
+                snoozeButton.Visible = true;
                 if (setAlarmButton.Text == "Alarm Set")
                 {
                     setAlarmButton.Text = "Set Alarm";
@@ -41,7 +42,10 @@ namespace SENG403_AlarmClock
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+
         }
 
         private void setAlarmButton_Click(object sender, EventArgs e)
@@ -61,13 +65,20 @@ namespace SENG403_AlarmClock
                 setAlarmButton.Text = "Set Alarm";
             }
         }
+
+        private void snoozeButton_Click(object sender, EventArgs e)
+        {
+            AlarmActivatedLabel.Visible = false;
+            snoozeButton.Visible = false;
+           // alarm.Snooze();
+        }
     }
 
     public partial class AlarmNotification
     {
         public void ticked()
         {
-            new Form2().ShowDialog();
+           // new Form2().ShowDialog();
         }
     }
 

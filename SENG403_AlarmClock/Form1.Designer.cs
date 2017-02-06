@@ -34,6 +34,8 @@
             this.alarmTimePicker = new System.Windows.Forms.DateTimePicker();
             this.setAlarmButton = new System.Windows.Forms.Button();
             this.cancelAlarmButton = new System.Windows.Forms.Button();
+            this.AlarmActivatedLabel = new System.Windows.Forms.Label();
+            this.snoozeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // currentTimeDisplay
@@ -55,7 +57,7 @@
             // alarmTimePicker
             // 
             this.alarmTimePicker.Location = new System.Drawing.Point(2, 30);
-            this.alarmTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.alarmTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.alarmTimePicker.Name = "alarmTimePicker";
             this.alarmTimePicker.Size = new System.Drawing.Size(151, 20);
             this.alarmTimePicker.TabIndex = 1;
@@ -63,7 +65,7 @@
             // setAlarmButton
             // 
             this.setAlarmButton.Location = new System.Drawing.Point(9, 62);
-            this.setAlarmButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.setAlarmButton.Margin = new System.Windows.Forms.Padding(2);
             this.setAlarmButton.Name = "setAlarmButton";
             this.setAlarmButton.Size = new System.Drawing.Size(83, 19);
             this.setAlarmButton.TabIndex = 2;
@@ -81,16 +83,39 @@
             this.cancelAlarmButton.UseVisualStyleBackColor = true;
             this.cancelAlarmButton.Click += new System.EventHandler(this.cancelAlarmButton_Click);
             // 
+            // AlarmActivatedLabel
+            // 
+            this.AlarmActivatedLabel.AutoSize = true;
+            this.AlarmActivatedLabel.Location = new System.Drawing.Point(36, 131);
+            this.AlarmActivatedLabel.Name = "AlarmActivatedLabel";
+            this.AlarmActivatedLabel.Size = new System.Drawing.Size(129, 13);
+            this.AlarmActivatedLabel.TabIndex = 4;
+            this.AlarmActivatedLabel.Text = "ALARM HAS GONE OFF!";
+            this.AlarmActivatedLabel.Visible = false;
+            // 
+            // snoozeButton
+            // 
+            this.snoozeButton.Location = new System.Drawing.Point(17, 171);
+            this.snoozeButton.Name = "snoozeButton";
+            this.snoozeButton.Size = new System.Drawing.Size(75, 23);
+            this.snoozeButton.TabIndex = 5;
+            this.snoozeButton.Text = "SNOOZE";
+            this.snoozeButton.UseVisualStyleBackColor = true;
+            this.snoozeButton.Visible = false;
+            this.snoozeButton.Click += new System.EventHandler(this.snoozeButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(212, 206);
+            this.Controls.Add(this.snoozeButton);
+            this.Controls.Add(this.AlarmActivatedLabel);
             this.Controls.Add(this.cancelAlarmButton);
             this.Controls.Add(this.setAlarmButton);
             this.Controls.Add(this.alarmTimePicker);
             this.Controls.Add(this.currentTimeDisplay);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -106,6 +131,8 @@
         private System.Windows.Forms.DateTimePicker alarmTimePicker;
         private System.Windows.Forms.Button setAlarmButton;
         private System.Windows.Forms.Button cancelAlarmButton;
+        private System.Windows.Forms.Label AlarmActivatedLabel;
+        private System.Windows.Forms.Button snoozeButton;
     }
 }
 

@@ -9,34 +9,47 @@ namespace SENG403_AlarmClock
     public class Alarm
     {
         private DateTime? time;
+        private DateTime? defaultTime;
         private double snoozeTime;
 
         public Alarm()
         {
             this.time = null;
-            snoozeTime = 5;
+            this.defaultTime = null;
+            snoozeTime = 0.1;
+        }
+
+        public Alarm(Alarm newAlarm)
+        {
+            this.time = newAlarm.GetTime();
+            this.snoozeTime = newAlarm.GetSnoozeTime();
         }
 
         public void SetTime(DateTime newTime)
         {
-            this.time = newTime;
-        }
+            this.defaultTime = newTime;
+            this.time = this.defaultTime;        }
 
-        public void Snooze()
+        public void Snooze(DateTime? currentTime)
         {
             if (time.HasValue) {
-                this.time = this.time.Value.AddMinutes(snoozeTime);
+                this.time = currentTime.Value.AddMinutes(snoozeTime);
             }
         }
 
         public void Cancel()
         {
-            this.time = null;
+            this.time = this.defaultTime;
         }
 
         public DateTime? GetTime()
         {
             return time;
+        }
+
+        public double GetSnoozeTime()
+        {
+            return snoozeTime;
         }
     }
 }
