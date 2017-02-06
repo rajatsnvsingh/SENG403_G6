@@ -44,6 +44,11 @@ namespace SENG403_AlarmClock
         {
             alarmTime = alarmTimePicker.Value.Date + alarmTimePicker.Value.TimeOfDay;
         }
+
+        private void cancelAlarmButton_Click(object sender, EventArgs e)
+        {
+            alarmTime = null;
+        }
     }
 
     public partial class AlarmNotification
