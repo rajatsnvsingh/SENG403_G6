@@ -32,6 +32,10 @@ namespace SENG403_AlarmClock
             {
                 alarm.Cancel();
                 new Form2(alarm).ShowDialog();
+                if (setAlarmButton.Text == "Alarm Set")
+                {
+                    setAlarmButton.Text = "Set Alarm";
+                }
             }
         }
 
