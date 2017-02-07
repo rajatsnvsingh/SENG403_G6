@@ -24,8 +24,8 @@ namespace SENG403_AlarmClock
         {
             InitializeComponent();
             this.currentTimeDisplay.Text = DateTime.Now.ToString("h:mm:ss tt");
-            this.alarmTimePicker.Format = DateTimePickerFormat.Time;
-            this.alarmTimePicker.ShowUpDown = true;
+            alarmTimePicker.Format = DateTimePickerFormat.Custom;
+            alarmTimePicker.CustomFormat = "hh:mm:ss tt    MM/dd/yyyy";
         }
 
         private void mainTimerTick(object sender, EventArgs e)
@@ -58,8 +58,13 @@ namespace SENG403_AlarmClock
         /// <param name="e"></param>
         private void setAlarmButton_Click(object sender, EventArgs e)
         {
+            DateTime alarmTime = alarmTimePicker.Value.Date + alarmTimePicker.Value.TimeOfDay;
+            if (DateTime.Now.CompareTo(alarmTime) >= 0)
+            {
+                return;
+            }
             alarm.stop();
-            alarm.SetTime(alarmTimePicker.Value.Date + alarmTimePicker.Value.TimeOfDay);
+            alarm.SetTime(alarmTime);
             if (setAlarmButton.Text == "Set Alarm")
             {
                 setAlarmButton.Text = "Alarm Set";
