@@ -17,7 +17,9 @@ namespace SENG403_AlarmClock
         Alarm alarm = new Alarm("../../alarm.wav");
         Form2 popup = new Form2();
         
-
+        /// <summary>
+        /// Initializes Clock Display Window Form
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
@@ -46,10 +48,14 @@ namespace SENG403_AlarmClock
         {
             this.TopMost = true;
             
-            
-
+    
         }
 
+        /// <summary>
+        /// Upon clicking Set Alarm button, turns off any previous alarm sound and sets alarm for specified time
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void setAlarmButton_Click(object sender, EventArgs e)
         {
             alarm.stop();
@@ -60,6 +66,11 @@ namespace SENG403_AlarmClock
             }
         }
 
+        /// <summary>
+        /// Upon clicking Cancel button, cancels an alarm that has been set, or turns off currently ringing alarm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cancelAlarmButton_Click(object sender, EventArgs e)
         {
             alarm.Cancel();
@@ -72,6 +83,11 @@ namespace SENG403_AlarmClock
             }
         }
 
+        /// <summary>
+        /// Upon clicking Snooze button after alarm rings, will add small delay to alarm time so that it will ring again 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void snoozeButton_Click(object sender, EventArgs e)
         {
             AlarmActivatedLabel.Visible = false;
