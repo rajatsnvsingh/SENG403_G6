@@ -28,6 +28,13 @@ namespace SENG403_AlarmClock
             alarmTimePicker.CustomFormat = "hh:mm:ss tt    MM/dd/yyyy";
         }
 
+        /// <summary>
+        /// Updates Timer tick and curreny time display.
+        /// Checks if current time equal to alarm time (if set)
+        /// If alarm time equal to current time, will play alarm and display snooze button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mainTimerTick(object sender, EventArgs e)
         {
             this.currentTimeDisplay.Text = DateTime.Now.ToString("h:mm:ss tt");
@@ -44,6 +51,11 @@ namespace SENG403_AlarmClock
             }
         }
 
+        /// <summary>
+        /// Set Alarm Clock window form as topmost window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
