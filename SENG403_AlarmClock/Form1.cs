@@ -16,13 +16,13 @@ namespace SENG403_AlarmClock
     {
         Alarm alarm = new Alarm("../../alarm.wav");
         Form2 popup = new Form2();
-        
+        List<ToolStrip> alarmStrips = new List<ToolStrip>();
         /// <summary>
         /// Initializes Clock Display Window Form
         /// </summary>
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();             
             this.currentTimeDisplay.Text = DateTime.Now.ToString("h:mm:ss tt");
             alarmTimePicker.Format = DateTimePickerFormat.Custom;
             alarmTimePicker.CustomFormat = "hh:mm:ss tt    MM/dd/yyyy";
@@ -111,6 +111,31 @@ namespace SENG403_AlarmClock
             snoozeButton.Visible = false;
             alarm.Snooze(DateTime.Now);
             alarm.stop();
+        }
+
+        private void creatAlarmButton_Click(object sender, EventArgs e)
+        {
+            ToolStripItem[] dummyItems = new ToolStripItem[3];
+            dummyItems[0] = new ToolStripLabel("00:00:00");
+            dummyItems[1] = new ToolStripButton("Set");
+            dummyItems[2] = new ToolStripButton("Edit");
+            ToolStrip dummyStrip = new ToolStrip(dummyItems);
+            dummyStrip.GripStyle = ToolStripGripStyle.Hidden;
+            alarmStrips.Add(dummyStrip);
+            alarmsList.TopToolStripPanel.Join(alarmStrips[alarmStrips.Count-1],alarmStrips.Count-1);
+        }
+
+        private void alarmsManagerButton_Click(object sender, EventArgs e)
+        {
+            if (alarmsList.TopToolStripPanel.Controls.Count == 0)
+            {
+                for (int i = 0; i < alarmStrips.Count; i++)
+                {
+                    alarmsList.TopToolStripPanel.Join(alarmStrips[i], i);
+                }
+            }else { alarmsList.TopToolStripPanel.Controls.Clear(); }
+            
+            creatAlarmButton.Visible = !creatAlarmButton.Visible;
         }
     }
 

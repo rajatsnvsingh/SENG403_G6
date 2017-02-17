@@ -36,6 +36,10 @@
             this.cancelAlarmButton = new System.Windows.Forms.Button();
             this.AlarmActivatedLabel = new System.Windows.Forms.Label();
             this.snoozeButton = new System.Windows.Forms.Button();
+            this.alarmsList = new System.Windows.Forms.ToolStripContainer();
+            this.creatAlarmButton = new System.Windows.Forms.Button();
+            this.alarmsManagerButton = new System.Windows.Forms.Button();
+            this.alarmsList.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentTimeDisplay
@@ -110,12 +114,55 @@
             this.snoozeButton.Visible = false;
             this.snoozeButton.Click += new System.EventHandler(this.snoozeButton_Click);
             // 
+            // alarmsList
+            // 
+            // 
+            // alarmsList.ContentPanel
+            // 
+            this.alarmsList.ContentPanel.AllowDrop = true;
+            this.alarmsList.ContentPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.alarmsList.ContentPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.alarmsList.ContentPanel.Size = new System.Drawing.Size(221, 489);
+            this.alarmsList.Location = new System.Drawing.Point(12, 98);
+            this.alarmsList.Name = "alarmsList";
+            this.alarmsList.Size = new System.Drawing.Size(221, 514);
+            this.alarmsList.TabIndex = 6;
+            this.alarmsList.Text = "toolStripContainer1";
+            // 
+            // alarmsList.TopToolStripPanel
+            // 
+            this.alarmsList.TopToolStripPanel.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // creatAlarmButton
+            // 
+            this.creatAlarmButton.Location = new System.Drawing.Point(73, 618);
+            this.creatAlarmButton.Name = "creatAlarmButton";
+            this.creatAlarmButton.Size = new System.Drawing.Size(75, 23);
+            this.creatAlarmButton.TabIndex = 7;
+            this.creatAlarmButton.Text = "Add Alarm";
+            this.creatAlarmButton.UseVisualStyleBackColor = true;
+            this.creatAlarmButton.Visible = false;
+            this.creatAlarmButton.Click += new System.EventHandler(this.creatAlarmButton_Click);
+            // 
+            // alarmsManagerButton
+            // 
+            this.alarmsManagerButton.Location = new System.Drawing.Point(12, 12);
+            this.alarmsManagerButton.Name = "alarmsManagerButton";
+            this.alarmsManagerButton.Size = new System.Drawing.Size(75, 23);
+            this.alarmsManagerButton.TabIndex = 8;
+            this.alarmsManagerButton.Text = "+";
+            this.alarmsManagerButton.UseVisualStyleBackColor = true;
+            this.alarmsManagerButton.Click += new System.EventHandler(this.alarmsManagerButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1362, 666);
+            this.Controls.Add(this.alarmsManagerButton);
+            this.Controls.Add(this.creatAlarmButton);
+            this.Controls.Add(this.alarmsList);
             this.Controls.Add(this.snoozeButton);
             this.Controls.Add(this.AlarmActivatedLabel);
             this.Controls.Add(this.cancelAlarmButton);
@@ -127,6 +174,8 @@
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.alarmsList.ResumeLayout(false);
+            this.alarmsList.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,6 +190,9 @@
         private System.Windows.Forms.Button cancelAlarmButton;
         private System.Windows.Forms.Label AlarmActivatedLabel;
         private System.Windows.Forms.Button snoozeButton;
+        private System.Windows.Forms.ToolStripContainer alarmsList;
+        private System.Windows.Forms.Button creatAlarmButton;
+        private System.Windows.Forms.Button alarmsManagerButton;
     }
 }
 
