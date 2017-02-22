@@ -14,6 +14,7 @@ namespace SENG403_AlarmClock
         private DateTime? defaultTime;
         private double snoozeTime;
         SoundPlayer alarmSound;
+        //int repeatIntervalDays = -1; //how many days before alarm goes off
 
         /// <summary>
         /// Alarm class constructor, takes in path filename for sound file
