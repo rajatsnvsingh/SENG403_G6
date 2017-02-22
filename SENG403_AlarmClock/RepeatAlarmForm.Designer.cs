@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.repeatAlarmButton = new System.Windows.Forms.Button();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.repeatingAlarmPicker = new System.Windows.Forms.DateTimePicker();
+            this.Sun = new System.Windows.Forms.RadioButton();
+            this.Sat = new System.Windows.Forms.RadioButton();
+            this.Fri = new System.Windows.Forms.RadioButton();
+            this.Thu = new System.Windows.Forms.RadioButton();
+            this.Wed = new System.Windows.Forms.RadioButton();
+            this.Tue = new System.Windows.Forms.RadioButton();
+            this.Mon = new System.Windows.Forms.RadioButton();
+            this.Daily = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // repeatAlarmButton
@@ -48,76 +49,7 @@
             this.repeatAlarmButton.TabIndex = 28;
             this.repeatAlarmButton.Text = "Set";
             this.repeatAlarmButton.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(375, 168);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(78, 21);
-            this.checkBox7.TabIndex = 27;
-            this.checkBox7.Text = "Sunday";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(244, 168);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(87, 21);
-            this.checkBox6.TabIndex = 26;
-            this.checkBox6.Text = "Saturday";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(109, 168);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(69, 21);
-            this.checkBox5.TabIndex = 25;
-            this.checkBox5.Text = "Friday";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(421, 126);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(90, 21);
-            this.checkBox4.TabIndex = 24;
-            this.checkBox4.Text = "Thursday";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(295, 126);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(105, 21);
-            this.checkBox3.TabIndex = 23;
-            this.checkBox3.Text = "Wednesday";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(164, 126);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(85, 21);
-            this.checkBox2.TabIndex = 22;
-            this.checkBox2.Text = "Tuesday";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(37, 126);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 21);
-            this.checkBox1.TabIndex = 21;
-            this.checkBox1.Text = "Monday";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.repeatAlarmButton.Click += new System.EventHandler(this.repeatAlarmButton_Click);
             // 
             // repeatingAlarmPicker
             // 
@@ -128,19 +60,108 @@
             this.repeatingAlarmPicker.Size = new System.Drawing.Size(518, 53);
             this.repeatingAlarmPicker.TabIndex = 20;
             // 
+            // Sun
+            // 
+            this.Sun.AutoSize = true;
+            this.Sun.Location = new System.Drawing.Point(297, 169);
+            this.Sun.Name = "Sun";
+            this.Sun.Size = new System.Drawing.Size(77, 21);
+            this.Sun.TabIndex = 37;
+            this.Sun.TabStop = true;
+            this.Sun.Text = "Sunday";
+            this.Sun.UseVisualStyleBackColor = true;
+            // 
+            // Sat
+            // 
+            this.Sat.AutoSize = true;
+            this.Sat.Location = new System.Drawing.Point(181, 169);
+            this.Sat.Name = "Sat";
+            this.Sat.Size = new System.Drawing.Size(86, 21);
+            this.Sat.TabIndex = 36;
+            this.Sat.TabStop = true;
+            this.Sat.Text = "Saturday";
+            this.Sat.UseVisualStyleBackColor = true;
+            // 
+            // Fri
+            // 
+            this.Fri.AutoSize = true;
+            this.Fri.Location = new System.Drawing.Point(57, 169);
+            this.Fri.Name = "Fri";
+            this.Fri.Size = new System.Drawing.Size(68, 21);
+            this.Fri.TabIndex = 35;
+            this.Fri.TabStop = true;
+            this.Fri.Text = "Friday";
+            this.Fri.UseVisualStyleBackColor = true;
+            // 
+            // Thu
+            // 
+            this.Thu.AutoSize = true;
+            this.Thu.Location = new System.Drawing.Point(428, 126);
+            this.Thu.Name = "Thu";
+            this.Thu.Size = new System.Drawing.Size(89, 21);
+            this.Thu.TabIndex = 34;
+            this.Thu.TabStop = true;
+            this.Thu.Text = "Thursday";
+            this.Thu.UseVisualStyleBackColor = true;
+            // 
+            // Wed
+            // 
+            this.Wed.AutoSize = true;
+            this.Wed.Location = new System.Drawing.Point(297, 126);
+            this.Wed.Name = "Wed";
+            this.Wed.Size = new System.Drawing.Size(104, 21);
+            this.Wed.TabIndex = 33;
+            this.Wed.TabStop = true;
+            this.Wed.Text = "Wednesday";
+            this.Wed.UseVisualStyleBackColor = true;
+            // 
+            // Tue
+            // 
+            this.Tue.AutoSize = true;
+            this.Tue.Location = new System.Drawing.Point(181, 126);
+            this.Tue.Name = "Tue";
+            this.Tue.Size = new System.Drawing.Size(84, 21);
+            this.Tue.TabIndex = 32;
+            this.Tue.TabStop = true;
+            this.Tue.Text = "Tuesday";
+            this.Tue.UseVisualStyleBackColor = true;
+            // 
+            // Mon
+            // 
+            this.Mon.AutoSize = true;
+            this.Mon.Location = new System.Drawing.Point(57, 126);
+            this.Mon.Name = "Mon";
+            this.Mon.Size = new System.Drawing.Size(79, 21);
+            this.Mon.TabIndex = 31;
+            this.Mon.TabStop = true;
+            this.Mon.Text = "Monday";
+            this.Mon.UseVisualStyleBackColor = true;
+            // 
+            // Daily
+            // 
+            this.Daily.AutoSize = true;
+            this.Daily.Location = new System.Drawing.Point(428, 169);
+            this.Daily.Name = "Daily";
+            this.Daily.Size = new System.Drawing.Size(60, 21);
+            this.Daily.TabIndex = 38;
+            this.Daily.TabStop = true;
+            this.Daily.Text = "Daily";
+            this.Daily.UseVisualStyleBackColor = true;
+            // 
             // RepeatAlarmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 392);
+            this.Controls.Add(this.Daily);
+            this.Controls.Add(this.Sun);
+            this.Controls.Add(this.Sat);
+            this.Controls.Add(this.Fri);
+            this.Controls.Add(this.Thu);
+            this.Controls.Add(this.Wed);
+            this.Controls.Add(this.Tue);
+            this.Controls.Add(this.Mon);
             this.Controls.Add(this.repeatAlarmButton);
-            this.Controls.Add(this.checkBox7);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.repeatingAlarmPicker);
             this.Name = "RepeatAlarmForm";
             this.Text = "Repeating Alarm";
@@ -152,13 +173,14 @@
         #endregion
 
         private System.Windows.Forms.Button repeatAlarmButton;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DateTimePicker repeatingAlarmPicker;
+        private System.Windows.Forms.RadioButton Sun;
+        private System.Windows.Forms.RadioButton Sat;
+        private System.Windows.Forms.RadioButton Fri;
+        private System.Windows.Forms.RadioButton Thu;
+        private System.Windows.Forms.RadioButton Wed;
+        private System.Windows.Forms.RadioButton Tue;
+        private System.Windows.Forms.RadioButton Mon;
+        private System.Windows.Forms.RadioButton Daily;
     }
 }

@@ -19,8 +19,6 @@ namespace SENG403_AlarmClock
             currentTimeDisplay.Text = currentTime.ToString("h:mm:ss tt");
             nonrepeatingAlarmPicker.Format = DateTimePickerFormat.Custom;
             nonrepeatingAlarmPicker.CustomFormat = " MM/dd/yyyy  hh:mm:ss tt";
-            repeatingAlarmPicker.Format = DateTimePickerFormat.Custom;
-            repeatingAlarmPicker.CustomFormat = " hh:mm:ss tt";
             debugDateTimePicker.Format = DateTimePickerFormat.Custom;
             debugDateTimePicker.CustomFormat = " MM/dd/yyyy hh:mm:ss tt";
         }
@@ -36,6 +34,17 @@ namespace SENG403_AlarmClock
         {
             currentTime = currentTime.AddSeconds(1);
             currentTimeDisplay.Text = currentTime.ToString("h:mm:ss tt");
+            foreach (Alarm alarm in alarms)
+            {
+                Console.WriteLine(alarm.GetTime() + " " + currentTime);
+                if (currentTime.CompareTo(alarm.GetTime()) >= 0)
+                {
+                    Console.WriteLine("An alarm has gone off!");
+                    dismissAlarmButton.Visible = true;
+                    snoozeButton.Visible = true;
+                    alarmActivatedLabel.Visible = true;
+                }
+            }
         }
 
         /// <summary>
@@ -55,20 +64,39 @@ namespace SENG403_AlarmClock
         /// <param name="e"></param>
         private void snoozeButton_Click(object sender, EventArgs e)
         {
-            AlarmActivatedLabel.Visible = false;
+            alarmActivatedLabel.Visible = false;
             snoozeButton.Visible = false;
         }
 
         private void creatAlarmButton_Click(object sender, EventArgs e)
         {
-            ToolStripItem[] dummyItems = new ToolStripItem[3];
+            ToolStripItem[] dummyItems = new ToolStripItem[4];
             dummyItems[0] = new ToolStripLabel("00:00:00");
-            dummyItems[1] = new ToolStripButton("Set");
-            dummyItems[2] = new ToolStripButton("Edit");
+            dummyItems[1] = new ToolStripButton("Set No-Repeat");
+            dummyItems[2] = new ToolStripButton("Set Repeat");
+            dummyItems[3] = new ToolStripButton("Cancel");
+            dummyItems[2].Click += (snd, evt) =>
+            {
+                new RepeatAlarmForm(this).ShowDialog(this);
+            };
+            dummyItems[3].Click += (snd, evt) =>
+            {
+                alarms.RemoveAt(alarmStrips.Count);
+            };
             ToolStrip dummyStrip = new ToolStrip(dummyItems);
             dummyStrip.GripStyle = ToolStripGripStyle.Hidden;
             alarmStrips.Add(dummyStrip);
             alarmsList.TopToolStripPanel.Join(alarmStrips[alarmStrips.Count-1],alarmStrips.Count-1);
+        }
+
+        public void addDailyAlarm(DateTime dt)
+        {
+            alarms.Add(Alarm.createDailyAlarm(dt));
+        }
+
+        public void addWeeklyAlarm(DayOfWeek day, DateTime dt)
+        {
+            alarms.Add(Alarm.createWeeklyAlarm(day, dt));
         }
 
         private void alarmsManagerButton_Click(object sender, EventArgs e)
@@ -84,42 +112,6 @@ namespace SENG403_AlarmClock
             creatAlarmButton.Visible = !creatAlarmButton.Visible;
         }
 
-        private void repeatAlarmButton_Click(object sender, EventArgs e)
-        {
-            if (Mon.Checked)
-            {
-
-            }
-            if (Tue.Checked)
-            {
-
-            }
-            if (Wed.Checked)
-            {
-
-            }
-            if (Thu.Checked)
-            {
-
-            }
-            if (Fri.Checked)
-            {
-
-            }
-            if (Sat.Checked)
-            {
-
-            }
-            if (Sun.Checked)
-            {
-
-            }
-            if (Daily.Checked)
-            {
-
-            }
-        }
-
         private void nonrepeatAlarmButton_Click(object sender, EventArgs e)
         {
 
@@ -129,7 +121,7 @@ namespace SENG403_AlarmClock
         {
             foreach (Alarm a in alarms)
             {
-
+                Console.WriteLine(a);
             }
         }
 
@@ -137,6 +129,23 @@ namespace SENG403_AlarmClock
         {
             currentTime = DateTime.Parse(debugDateTimePicker.Text);
             currentTimeDisplay.Text = currentTime.ToString("h:mm:ss tt");
+        }
+
+        private void dismissAlarmButton_Click(object sender, EventArgs e)
+        {
+            //right now, just dismiss all alarms which have gone off
+            //will need a better way to deal with multiple alarms next sprint
+            dismissAlarmButton.Visible = false;
+            snoozeButton.Visible = false;
+            alarmActivatedLabel.Visible = false;
+
+            foreach (Alarm alarm in alarms)
+            {
+                if (DateTime.Now.CompareTo(alarm.GetTime()) >= 0)
+                {
+                    alarm.update();    
+                }
+            }
         }
     }
 
