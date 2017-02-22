@@ -46,7 +46,7 @@
             this.Tue = new System.Windows.Forms.RadioButton();
             this.Wed = new System.Windows.Forms.RadioButton();
             this.setCurrentTime = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.debugDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Thu = new System.Windows.Forms.RadioButton();
             this.Fri = new System.Windows.Forms.RadioButton();
             this.Sat = new System.Windows.Forms.RadioButton();
@@ -243,15 +243,16 @@
             this.setCurrentTime.TabIndex = 25;
             this.setCurrentTime.Text = "Set Current Time (testing/demo)";
             this.setCurrentTime.UseVisualStyleBackColor = true;
+            this.setCurrentTime.Click += new System.EventHandler(this.setCurrentTime_Click);
             // 
-            // dateTimePicker1
+            // debugDateTimePicker
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(1123, 538);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(387, 53);
-            this.dateTimePicker1.TabIndex = 26;
+            this.debugDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.debugDateTimePicker.Location = new System.Drawing.Point(1123, 538);
+            this.debugDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.debugDateTimePicker.Name = "debugDateTimePicker";
+            this.debugDateTimePicker.Size = new System.Drawing.Size(554, 53);
+            this.debugDateTimePicker.TabIndex = 26;
             // 
             // Thu
             // 
@@ -319,7 +320,7 @@
             this.Controls.Add(this.Sat);
             this.Controls.Add(this.Fri);
             this.Controls.Add(this.Thu);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.debugDateTimePicker);
             this.Controls.Add(this.setCurrentTime);
             this.Controls.Add(this.Wed);
             this.Controls.Add(this.Tue);
@@ -368,7 +369,7 @@
         private System.Windows.Forms.RadioButton Mon;
         private System.Windows.Forms.RadioButton Wed;
         private System.Windows.Forms.Button setCurrentTime;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker debugDateTimePicker;
         private System.Windows.Forms.RadioButton Thu;
         private System.Windows.Forms.RadioButton Fri;
         private System.Windows.Forms.RadioButton Sat;
