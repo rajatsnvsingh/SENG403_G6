@@ -16,12 +16,12 @@ namespace SENG403_AlarmClock
         SoundPlayer alarmSound;
         private int repeatIntervalDays = -1; //how many days before alarm goes off
 
-        public static Alarm createDailyAlarm(DateTime alarmTime)
+        public static Alarm createDailyAlarm(DateTime alarmTime, double snoozeTime)
         {
             TimeSpan ts = new TimeSpan(alarmTime.Hour, alarmTime.Minute, alarmTime.Second);
             DateTime dt = DateTime.Today.Add(ts);
             Console.WriteLine(dt);
-            return new Alarm(dt, 1);
+            return new Alarm(dt, 1, snoozeTime);
         }
 
         public static Alarm createWeeklyAlarm(DayOfWeek day, DateTime alarmTime)
@@ -29,20 +29,22 @@ namespace SENG403_AlarmClock
             return null;
         }
         
-        public Alarm(DateTime alarmTime, int repeatInterval)
+        public Alarm(DateTime alarmTime, int repeatInterval, double snoozeTime)
         {
-            defaultAlarmTime = notifyTime = alarmTime;
+            defaultAlarmTime = notifyTime  = alarmTime;
             this.repeatIntervalDays = repeatInterval;
+            this.snoozeTime = snoozeTime; 
+
         }
 
         /// <summary>
         /// Alarm class constructor, takes in path filename for sound file
         /// </summary>
         /// <param name="alarmFile"></param>
-        public Alarm(string alarmFile)
+        public Alarm(string alarmFile, double snoozeTime)
         {
             alarmSound = new SoundPlayer(alarmFile);
-            snoozeTime = 0.1;
+            this.snoozeTime =snoozeTime ;
         }
 
         /// <summary>
@@ -96,7 +98,10 @@ namespace SENG403_AlarmClock
         /// <param name="currentTime"></param>
         public void Snooze(DateTime currentTime)
         {
- 
+               
+            
+                this.defaultAlarmTime = currentTime.AddMinutes(snoozeTime);
+           
         }
 
         /// <summary>

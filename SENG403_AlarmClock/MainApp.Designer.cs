@@ -46,6 +46,7 @@
             this.setSnoozeButton = new System.Windows.Forms.Button();
             this.snoozeTimeUpDown = new System.Windows.Forms.NumericUpDown();
             this.snoozeMinutesLabel = new System.Windows.Forms.Label();
+            this.hello = new System.Windows.Forms.Label();
             this.alarmsList.ContentPanel.SuspendLayout();
             this.alarmsList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.snoozeTimeUpDown)).BeginInit();
@@ -255,12 +256,22 @@
             this.snoozeMinutesLabel.Text = "Minute(s)";
             this.snoozeMinutesLabel.Visible = false;
             // 
+            // hello
+            // 
+            this.hello.AutoSize = true;
+            this.hello.Location = new System.Drawing.Point(464, 165);
+            this.hello.Name = "hello";
+            this.hello.Size = new System.Drawing.Size(35, 13);
+            this.hello.TabIndex = 31;
+            this.hello.Text = "label2";
+            // 
             // MainApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1324, 741);
+            this.Controls.Add(this.hello);
             this.Controls.Add(this.snoozeMinutesLabel);
             this.Controls.Add(this.snoozeTimeUpDown);
             this.Controls.Add(this.setSnoozeButton);
@@ -310,6 +321,7 @@
         private System.Windows.Forms.Button setSnoozeButton;
         private System.Windows.Forms.NumericUpDown snoozeTimeUpDown;
         private System.Windows.Forms.Label snoozeMinutesLabel;
+        private System.Windows.Forms.Label hello;
     }
 }
 

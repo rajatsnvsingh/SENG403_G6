@@ -9,7 +9,7 @@ namespace SENG403_AlarmClock
         List<ToolStrip> alarmStrips = new List<ToolStrip>();
         DateTime currentTime = DateTime.Now; //keep track of the current time to support manually setting the time
         List<Alarm> alarms = new List<Alarm>();
-
+        double globalSnooze = 0.1 ;  
         /// <summary>
         /// Initializes Clock Display Window Form
         /// </summary>
@@ -70,6 +70,13 @@ namespace SENG403_AlarmClock
         {
             alarmActivatedLabel.Visible = false;
             snoozeButton.Visible = false;
+
+           
+            
+            foreach (Alarm alarm in alarms) {
+
+                alarm.Snooze(currentTime);
+            }
         }
 
         private void creatAlarmButton_Click(object sender, EventArgs e)
@@ -95,7 +102,7 @@ namespace SENG403_AlarmClock
 
         public void addDailyAlarm(DateTime dt)
         {
-            alarms.Add(Alarm.createDailyAlarm(dt));
+            alarms.Add(Alarm.createDailyAlarm(dt,globalSnooze));
         }
 
         public void addWeeklyAlarm(DayOfWeek day, DateTime dt)
@@ -173,26 +180,37 @@ namespace SENG403_AlarmClock
 
                 setSnoozeButton.Text = "Confirm Snooze";
             }
+
+
             //confirm new snooze interval
             else if(setSnoozeButton.Text == "Confirm Snooze")
             {
                 snoozeTimeUpDown.Visible = false;
                 snoozeMinutesLabel.Visible = false;
 
+
+
                 //set snooze interval in minutes for each alarm
                 double newSnooze = Convert.ToDouble(snoozeTimeUpDown.Value);
-                
+                globalSnooze = newSnooze;
+
+                hello.Text = "" + globalSnooze; 
+               
                 foreach (Alarm alarm in alarms)
                 {
-                    alarm.setSnooze(newSnooze);
+                    alarm.setSnooze(globalSnooze);
+                    double changedSnooze = alarm.GetSnoozeTime();
+                    hello.Text = "Snooze has been changed to " + changedSnooze;
                 }
+
+                
                 setSnoozeButton.Text = "Set Snooze";
             }
 
             
         }
 
- 
+       
     }
 
 }
