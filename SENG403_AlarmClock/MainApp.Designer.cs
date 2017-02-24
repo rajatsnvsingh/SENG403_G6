@@ -43,17 +43,22 @@
             this.setCurrentTime = new System.Windows.Forms.Button();
             this.debugDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dismissAlarmButton = new System.Windows.Forms.Button();
+            this.setSnoozeButton = new System.Windows.Forms.Button();
+            this.snoozeTimeUpDown = new System.Windows.Forms.NumericUpDown();
+            this.snoozeMinutesLabel = new System.Windows.Forms.Label();
             this.alarmsList.ContentPanel.SuspendLayout();
             this.alarmsList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.snoozeTimeUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // currentTimeDisplay
             // 
             this.currentTimeDisplay.AutoSize = true;
             this.currentTimeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentTimeDisplay.Location = new System.Drawing.Point(501, 15);
+            this.currentTimeDisplay.Location = new System.Drawing.Point(376, 12);
+            this.currentTimeDisplay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentTimeDisplay.Name = "currentTimeDisplay";
-            this.currentTimeDisplay.Size = new System.Drawing.Size(379, 135);
+            this.currentTimeDisplay.Size = new System.Drawing.Size(299, 108);
             this.currentTimeDisplay.TabIndex = 0;
             this.currentTimeDisplay.Text = "label1";
             // 
@@ -67,10 +72,9 @@
             // 
             this.alarmActivatedLabel.AutoSize = true;
             this.alarmActivatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.alarmActivatedLabel.Location = new System.Drawing.Point(501, 627);
-            this.alarmActivatedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.alarmActivatedLabel.Location = new System.Drawing.Point(376, 509);
             this.alarmActivatedLabel.Name = "alarmActivatedLabel";
-            this.alarmActivatedLabel.Size = new System.Drawing.Size(722, 69);
+            this.alarmActivatedLabel.Size = new System.Drawing.Size(577, 55);
             this.alarmActivatedLabel.TabIndex = 4;
             this.alarmActivatedLabel.Text = "ALARM HAS GONE OFF!";
             this.alarmActivatedLabel.Visible = false;
@@ -78,10 +82,9 @@
             // snoozeButton
             // 
             this.snoozeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.snoozeButton.Location = new System.Drawing.Point(618, 726);
-            this.snoozeButton.Margin = new System.Windows.Forms.Padding(4);
+            this.snoozeButton.Location = new System.Drawing.Point(464, 590);
             this.snoozeButton.Name = "snoozeButton";
-            this.snoozeButton.Size = new System.Drawing.Size(249, 81);
+            this.snoozeButton.Size = new System.Drawing.Size(187, 66);
             this.snoozeButton.TabIndex = 5;
             this.snoozeButton.Text = "SNOOZE";
             this.snoozeButton.UseVisualStyleBackColor = true;
@@ -96,12 +99,11 @@
             this.alarmsList.ContentPanel.AllowDrop = true;
             this.alarmsList.ContentPanel.Controls.Add(this.label1);
             this.alarmsList.ContentPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.alarmsList.ContentPanel.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.alarmsList.ContentPanel.Size = new System.Drawing.Size(295, 608);
-            this.alarmsList.Location = new System.Drawing.Point(16, 121);
-            this.alarmsList.Margin = new System.Windows.Forms.Padding(4);
+            this.alarmsList.ContentPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.alarmsList.ContentPanel.Size = new System.Drawing.Size(221, 489);
+            this.alarmsList.Location = new System.Drawing.Point(12, 98);
             this.alarmsList.Name = "alarmsList";
-            this.alarmsList.Size = new System.Drawing.Size(295, 633);
+            this.alarmsList.Size = new System.Drawing.Size(221, 514);
             this.alarmsList.TabIndex = 6;
             this.alarmsList.Text = "toolStripContainer1";
             // 
@@ -113,17 +115,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label1.Location = new System.Drawing.Point(10, 17);
+            this.label1.Location = new System.Drawing.Point(8, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 17);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
             // 
             // creatAlarmButton
             // 
-            this.creatAlarmButton.Location = new System.Drawing.Point(97, 761);
-            this.creatAlarmButton.Margin = new System.Windows.Forms.Padding(4);
+            this.creatAlarmButton.Location = new System.Drawing.Point(73, 618);
             this.creatAlarmButton.Name = "creatAlarmButton";
-            this.creatAlarmButton.Size = new System.Drawing.Size(100, 28);
+            this.creatAlarmButton.Size = new System.Drawing.Size(75, 23);
             this.creatAlarmButton.TabIndex = 7;
             this.creatAlarmButton.Text = "Add Alarm";
             this.creatAlarmButton.UseVisualStyleBackColor = true;
@@ -132,10 +134,9 @@
             // 
             // alarmsManagerButton
             // 
-            this.alarmsManagerButton.Location = new System.Drawing.Point(16, 15);
-            this.alarmsManagerButton.Margin = new System.Windows.Forms.Padding(4);
+            this.alarmsManagerButton.Location = new System.Drawing.Point(12, 12);
             this.alarmsManagerButton.Name = "alarmsManagerButton";
-            this.alarmsManagerButton.Size = new System.Drawing.Size(100, 28);
+            this.alarmsManagerButton.Size = new System.Drawing.Size(75, 23);
             this.alarmsManagerButton.TabIndex = 8;
             this.alarmsManagerButton.Text = "+";
             this.alarmsManagerButton.UseVisualStyleBackColor = true;
@@ -144,18 +145,19 @@
             // nonrepeatingAlarmPicker
             // 
             this.nonrepeatingAlarmPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nonrepeatingAlarmPicker.Location = new System.Drawing.Point(524, 460);
-            this.nonrepeatingAlarmPicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nonrepeatingAlarmPicker.Location = new System.Drawing.Point(394, 295);
+            this.nonrepeatingAlarmPicker.Margin = new System.Windows.Forms.Padding(2);
             this.nonrepeatingAlarmPicker.Name = "nonrepeatingAlarmPicker";
-            this.nonrepeatingAlarmPicker.Size = new System.Drawing.Size(518, 53);
+            this.nonrepeatingAlarmPicker.Size = new System.Drawing.Size(390, 44);
             this.nonrepeatingAlarmPicker.TabIndex = 10;
             // 
             // nonrepeatAlarmButton
             // 
             this.nonrepeatAlarmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nonrepeatAlarmButton.Location = new System.Drawing.Point(524, 538);
+            this.nonrepeatAlarmButton.Location = new System.Drawing.Point(394, 358);
+            this.nonrepeatAlarmButton.Margin = new System.Windows.Forms.Padding(2);
             this.nonrepeatAlarmButton.Name = "nonrepeatAlarmButton";
-            this.nonrepeatAlarmButton.Size = new System.Drawing.Size(289, 46);
+            this.nonrepeatAlarmButton.Size = new System.Drawing.Size(217, 37);
             this.nonrepeatAlarmButton.TabIndex = 20;
             this.nonrepeatAlarmButton.Text = "Add Nonrepeating Alarm";
             this.nonrepeatAlarmButton.UseVisualStyleBackColor = true;
@@ -164,9 +166,10 @@
             // debugAlarms
             // 
             this.debugAlarms.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.debugAlarms.Location = new System.Drawing.Point(1123, 268);
+            this.debugAlarms.Location = new System.Drawing.Point(842, 218);
+            this.debugAlarms.Margin = new System.Windows.Forms.Padding(2);
             this.debugAlarms.Name = "debugAlarms";
-            this.debugAlarms.Size = new System.Drawing.Size(273, 87);
+            this.debugAlarms.Size = new System.Drawing.Size(205, 71);
             this.debugAlarms.TabIndex = 21;
             this.debugAlarms.Text = "Debug (print alarms info to console)";
             this.debugAlarms.UseVisualStyleBackColor = true;
@@ -175,9 +178,10 @@
             // setCurrentTime
             // 
             this.setCurrentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setCurrentTime.Location = new System.Drawing.Point(1123, 426);
+            this.setCurrentTime.Location = new System.Drawing.Point(842, 346);
+            this.setCurrentTime.Margin = new System.Windows.Forms.Padding(2);
             this.setCurrentTime.Name = "setCurrentTime";
-            this.setCurrentTime.Size = new System.Drawing.Size(273, 87);
+            this.setCurrentTime.Size = new System.Drawing.Size(205, 71);
             this.setCurrentTime.TabIndex = 25;
             this.setCurrentTime.Text = "Set Current Time (testing/demo)";
             this.setCurrentTime.UseVisualStyleBackColor = true;
@@ -186,31 +190,80 @@
             // debugDateTimePicker
             // 
             this.debugDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.debugDateTimePicker.Location = new System.Drawing.Point(1123, 538);
-            this.debugDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.debugDateTimePicker.Location = new System.Drawing.Point(842, 437);
+            this.debugDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.debugDateTimePicker.Name = "debugDateTimePicker";
-            this.debugDateTimePicker.Size = new System.Drawing.Size(554, 53);
+            this.debugDateTimePicker.Size = new System.Drawing.Size(416, 44);
             this.debugDateTimePicker.TabIndex = 26;
             // 
             // dismissAlarmButton
             // 
             this.dismissAlarmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dismissAlarmButton.Location = new System.Drawing.Point(916, 726);
-            this.dismissAlarmButton.Margin = new System.Windows.Forms.Padding(4);
+            this.dismissAlarmButton.Location = new System.Drawing.Point(687, 590);
             this.dismissAlarmButton.Name = "dismissAlarmButton";
-            this.dismissAlarmButton.Size = new System.Drawing.Size(249, 81);
+            this.dismissAlarmButton.Size = new System.Drawing.Size(187, 66);
             this.dismissAlarmButton.TabIndex = 27;
             this.dismissAlarmButton.Text = "DISMISS";
             this.dismissAlarmButton.UseVisualStyleBackColor = true;
             this.dismissAlarmButton.Visible = false;
             this.dismissAlarmButton.Click += new System.EventHandler(this.dismissAlarmButton_Click);
             // 
+            // setSnoozeButton
+            // 
+            this.setSnoozeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setSnoozeButton.Location = new System.Drawing.Point(394, 411);
+            this.setSnoozeButton.Name = "setSnoozeButton";
+            this.setSnoozeButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.setSnoozeButton.Size = new System.Drawing.Size(182, 37);
+            this.setSnoozeButton.TabIndex = 28;
+            this.setSnoozeButton.Text = "Set Snooze";
+            this.setSnoozeButton.UseVisualStyleBackColor = true;
+            this.setSnoozeButton.Click += new System.EventHandler(this.setSnoozeButton_Click);
+            // 
+            // snoozeTimeUpDown
+            // 
+            this.snoozeTimeUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snoozeTimeUpDown.Location = new System.Drawing.Point(582, 416);
+            this.snoozeTimeUpDown.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.snoozeTimeUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.snoozeTimeUpDown.Name = "snoozeTimeUpDown";
+            this.snoozeTimeUpDown.Size = new System.Drawing.Size(51, 28);
+            this.snoozeTimeUpDown.TabIndex = 29;
+            this.snoozeTimeUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.snoozeTimeUpDown.Visible = false;
+            // 
+            // snoozeMinutesLabel
+            // 
+            this.snoozeMinutesLabel.AutoSize = true;
+            this.snoozeMinutesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snoozeMinutesLabel.Location = new System.Drawing.Point(639, 420);
+            this.snoozeMinutesLabel.Name = "snoozeMinutesLabel";
+            this.snoozeMinutesLabel.Size = new System.Drawing.Size(88, 24);
+            this.snoozeMinutesLabel.TabIndex = 30;
+            this.snoozeMinutesLabel.Text = "Minute(s)";
+            this.snoozeMinutesLabel.Visible = false;
+            // 
             // MainApp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1816, 820);
+            this.ClientSize = new System.Drawing.Size(1324, 741);
+            this.Controls.Add(this.snoozeMinutesLabel);
+            this.Controls.Add(this.snoozeTimeUpDown);
+            this.Controls.Add(this.setSnoozeButton);
             this.Controls.Add(this.dismissAlarmButton);
             this.Controls.Add(this.debugDateTimePicker);
             this.Controls.Add(this.setCurrentTime);
@@ -223,7 +276,7 @@
             this.Controls.Add(this.snoozeButton);
             this.Controls.Add(this.alarmActivatedLabel);
             this.Controls.Add(this.currentTimeDisplay);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainApp";
             this.Text = "SENG 401 G6 Alarm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -232,6 +285,7 @@
             this.alarmsList.ContentPanel.PerformLayout();
             this.alarmsList.ResumeLayout(false);
             this.alarmsList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.snoozeTimeUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,6 +307,9 @@
         private System.Windows.Forms.Button setCurrentTime;
         private System.Windows.Forms.DateTimePicker debugDateTimePicker;
         private System.Windows.Forms.Button dismissAlarmButton;
+        private System.Windows.Forms.Button setSnoozeButton;
+        private System.Windows.Forms.NumericUpDown snoozeTimeUpDown;
+        private System.Windows.Forms.Label snoozeMinutesLabel;
     }
 }
 

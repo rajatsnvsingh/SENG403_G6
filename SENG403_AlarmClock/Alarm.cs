@@ -96,7 +96,7 @@ namespace SENG403_AlarmClock
         /// <param name="currentTime"></param>
         public void Snooze(DateTime currentTime)
         {
-            
+ 
         }
 
         /// <summary>

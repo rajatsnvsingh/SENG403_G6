@@ -36,14 +36,18 @@ namespace SENG403_AlarmClock
             currentTimeDisplay.Text = currentTime.ToString("h:mm:ss tt");
             foreach (Alarm alarm in alarms)
             {
-                Console.WriteLine(alarm.GetTime() + " " + currentTime);
-                if (currentTime.CompareTo(alarm.GetTime()) >= 0)
+                if(alarm != null)
                 {
-                    Console.WriteLine("An alarm has gone off!");
-                    dismissAlarmButton.Visible = true;
-                    snoozeButton.Visible = true;
-                    alarmActivatedLabel.Visible = true;
+                    Console.WriteLine(alarm.GetTime() + " " + currentTime);
+                    if (currentTime.CompareTo(alarm.GetTime()) >= 0)
+                    {
+                        Console.WriteLine("An alarm has gone off!");
+                        dismissAlarmButton.Visible = true;
+                        snoozeButton.Visible = true;
+                        alarmActivatedLabel.Visible = true;
+                    }
                 }
+                
             }
         }
 
@@ -141,12 +145,54 @@ namespace SENG403_AlarmClock
 
             foreach (Alarm alarm in alarms)
             {
-                if (DateTime.Now.CompareTo(alarm.GetTime()) >= 0)
+                if(alarm != null)
                 {
-                    alarm.update();    
+                    if (DateTime.Now.CompareTo(alarm.GetTime()) >= 0)
+                    {
+                        alarm.update();
+                    }
                 }
+               
             }
         }
+
+        /// <summary>
+        /// Click Set Snooze button to manually set snooze interval for alarms
+        /// First click to show numeric list for values to choose from (min 1, max 60)
+        /// Second click to confirm and set snooze to value chosen on numeric list (in minutes)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void setSnoozeButton_Click(object sender, EventArgs e)
+        {
+            //set new snooze interval
+            if(setSnoozeButton.Text == "Set Snooze")
+            {
+                snoozeTimeUpDown.Visible = true; //can also manually type in minutes (1-60)
+                snoozeMinutesLabel.Visible = true;
+
+                setSnoozeButton.Text = "Confirm Snooze";
+            }
+            //confirm new snooze interval
+            else if(setSnoozeButton.Text == "Confirm Snooze")
+            {
+                snoozeTimeUpDown.Visible = false;
+                snoozeMinutesLabel.Visible = false;
+
+                //set snooze interval in minutes for each alarm
+                double newSnooze = Convert.ToDouble(snoozeTimeUpDown.Value);
+                
+                foreach (Alarm alarm in alarms)
+                {
+                    alarm.setSnooze(newSnooze);
+                }
+                setSnoozeButton.Text = "Set Snooze";
+            }
+
+            
+        }
+
+ 
     }
 
 }
