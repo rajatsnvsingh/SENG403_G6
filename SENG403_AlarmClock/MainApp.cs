@@ -6,10 +6,10 @@ namespace SENG403_AlarmClock
 {
     public partial class MainApp : Form
     {
-        List<ToolStrip> alarmStrips = new List<ToolStrip>();
+        const int INIT_ALARM_COUNT = 3; //total number of alarms supported
         DateTime currentTime = DateTime.Now; //keep track of the current time to support manually setting the time
-        List<Alarm> alarms = new List<Alarm>();
-
+        List<Alarm> alarms = new List<Alarm>(); //list of alarms
+        double globalSnooze = 0.1 ;  
         /// <summary>
         /// Initializes Clock Display Window Form
         /// </summary>
@@ -17,10 +17,10 @@ namespace SENG403_AlarmClock
         {
             InitializeComponent();
             currentTimeDisplay.Text = currentTime.ToString("h:mm:ss tt");
-            nonrepeatingAlarmPicker.Format = DateTimePickerFormat.Custom;
-            nonrepeatingAlarmPicker.CustomFormat = " MM/dd/yyyy  hh:mm:ss tt";
             debugDateTimePicker.Format = DateTimePickerFormat.Custom;
             debugDateTimePicker.CustomFormat = " MM/dd/yyyy hh:mm:ss tt";
+            for (int i = 0; i < INIT_ALARM_COUNT; i++)
+                alarms.Add(new Alarm());
         }
 
         /// <summary>
@@ -36,18 +36,12 @@ namespace SENG403_AlarmClock
             currentTimeDisplay.Text = currentTime.ToString("h:mm:ss tt");
             foreach (Alarm alarm in alarms)
             {
-                if(alarm != null)
+                if (alarm.isEnabled() && currentTime.CompareTo(alarm.GetTime()) >= 0)
                 {
-                    Console.WriteLine(alarm.GetTime() + " " + currentTime);
-                    if (currentTime.CompareTo(alarm.GetTime()) >= 0)
-                    {
-                        Console.WriteLine("An alarm has gone off!");
-                        dismissAlarmButton.Visible = true;
-                        snoozeButton.Visible = true;
-                        alarmActivatedLabel.Visible = true;
-                    }
+                    dismissAlarmButton.Visible = true;
+                    snoozeButton.Visible = true;
+                    alarmActivatedLabel.Visible = true;
                 }
-                
             }
         }
 
@@ -70,50 +64,28 @@ namespace SENG403_AlarmClock
         {
             alarmActivatedLabel.Visible = false;
             snoozeButton.Visible = false;
-        }
-
-        private void creatAlarmButton_Click(object sender, EventArgs e)
-        {
-            ToolStripItem[] dummyItems = new ToolStripItem[4];
-            dummyItems[0] = new ToolStripLabel("00:00:00");
-            dummyItems[1] = new ToolStripButton("Set No-Repeat");
-            dummyItems[2] = new ToolStripButton("Set Repeat");
-            dummyItems[3] = new ToolStripButton("Cancel");
-            dummyItems[2].Click += (snd, evt) =>
-            {
-                new RepeatAlarmForm(this).ShowDialog(this);
-            };
-            dummyItems[3].Click += (snd, evt) =>
-            {
-                alarms.RemoveAt(alarmStrips.Count);
-            };
-            ToolStrip dummyStrip = new ToolStrip(dummyItems);
-            dummyStrip.GripStyle = ToolStripGripStyle.Hidden;
-            alarmStrips.Add(dummyStrip);
-            alarmsList.TopToolStripPanel.Join(alarmStrips[alarmStrips.Count-1],alarmStrips.Count-1);
-        }
-
-        public void addDailyAlarm(DateTime dt)
-        {
-            alarms.Add(Alarm.createDailyAlarm(dt));
-        }
-
-        public void addWeeklyAlarm(DayOfWeek day, DateTime dt)
-        {
-            alarms.Add(Alarm.createWeeklyAlarm(day, dt));
-        }
-
-        private void alarmsManagerButton_Click(object sender, EventArgs e)
-        {
-            if (alarmsList.TopToolStripPanel.Controls.Count == 0)
-            {
-                for (int i = 0; i < alarmStrips.Count; i++)
-                {
-                    alarmsList.TopToolStripPanel.Join(alarmStrips[i], i);
-                }
-            }else { alarmsList.TopToolStripPanel.Controls.Clear(); }
             
-            creatAlarmButton.Visible = !creatAlarmButton.Visible;
+            foreach (Alarm alarm in alarms) {
+
+                alarm.Snooze(currentTime);
+            }
+        }
+
+        private int alarm_index = -1; //hacky way to update the alarm at that index
+
+        public void setDailyAlarm(DateTime dt)
+        {
+            alarms[alarm_index].setDailyAlarm(dt);
+        }
+
+        public void setWeeklyAlarm(DayOfWeek day, DateTime dt)
+        {
+            alarms[alarm_index].setWeeklyAlarm(day, dt);
+        }
+
+        public void setOneTimeAlarm(DateTime dt)
+        {
+            alarms[alarm_index].setOneTimeAlarm(dt);
         }
 
         private void nonrepeatAlarmButton_Click(object sender, EventArgs e)
@@ -147,7 +119,7 @@ namespace SENG403_AlarmClock
             {
                 if(alarm != null)
                 {
-                    if (DateTime.Now.CompareTo(alarm.GetTime()) >= 0)
+                    if (currentTime.CompareTo(alarm.GetTime()) >= 0 && alarm.isEnabled())
                     {
                         alarm.update();
                     }
@@ -173,26 +145,67 @@ namespace SENG403_AlarmClock
 
                 setSnoozeButton.Text = "Confirm Snooze";
             }
+
+
             //confirm new snooze interval
             else if(setSnoozeButton.Text == "Confirm Snooze")
             {
                 snoozeTimeUpDown.Visible = false;
                 snoozeMinutesLabel.Visible = false;
-
+                
                 //set snooze interval in minutes for each alarm
                 double newSnooze = Convert.ToDouble(snoozeTimeUpDown.Value);
+                globalSnooze = newSnooze;
                 
                 foreach (Alarm alarm in alarms)
                 {
-                    alarm.setSnooze(newSnooze);
+                    alarm.setSnooze(globalSnooze);
+                    double changedSnooze = alarm.GetSnoozeTime();
                 }
+                
                 setSnoozeButton.Text = "Set Snooze";
             }
-
             
         }
 
- 
+        private void cancel0_Click(object sender, EventArgs e)
+        {
+            alarms[0].disable();
+            alarm0_label.Text = "Not set";
+        }
+
+        private void cancel1_Click(object sender, EventArgs e)
+        {
+            alarms[1].disable();
+            alarm1_label.Text = "Not set";
+        }
+
+        private void cancel2_Click(object sender, EventArgs e)
+        {
+            alarms[2].disable();
+            alarm2_label.Text = "Not set";
+        }
+
+        private void edit0_Click(object sender, EventArgs e)
+        {
+            alarm_index = 0;
+            new SetAlarmForm(this).ShowDialog();
+            alarm0_label.Text = alarms[0].ToString();
+        }
+
+        private void edit1_Click(object sender, EventArgs e)
+        {
+            alarm_index = 1;
+            new SetAlarmForm(this).ShowDialog();
+            alarm1_label.Text = alarms[1].ToString();
+        }
+
+        private void edit2_Click(object sender, EventArgs e)
+        {
+            alarm_index = 2;
+            new SetAlarmForm(this).ShowDialog();
+            alarm2_label.Text = alarms[2].ToString();
+        }
     }
 
 }

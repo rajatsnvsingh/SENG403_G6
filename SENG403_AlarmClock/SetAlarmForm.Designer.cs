@@ -1,6 +1,6 @@
 ﻿namespace SENG403_AlarmClock
 {
-    partial class RepeatAlarmForm
+    partial class SetAlarmForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.repeatAlarmButton = new System.Windows.Forms.Button();
+            this.setAlarmButton = new System.Windows.Forms.Button();
             this.repeatingAlarmPicker = new System.Windows.Forms.DateTimePicker();
             this.Sun = new System.Windows.Forms.RadioButton();
             this.Sat = new System.Windows.Forms.RadioButton();
@@ -38,18 +38,19 @@
             this.Tue = new System.Windows.Forms.RadioButton();
             this.Mon = new System.Windows.Forms.RadioButton();
             this.Daily = new System.Windows.Forms.RadioButton();
+            this.repeatCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // repeatAlarmButton
+            // setAlarmButton
             // 
-            this.repeatAlarmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.repeatAlarmButton.Location = new System.Drawing.Point(185, 219);
-            this.repeatAlarmButton.Name = "repeatAlarmButton";
-            this.repeatAlarmButton.Size = new System.Drawing.Size(191, 46);
-            this.repeatAlarmButton.TabIndex = 28;
-            this.repeatAlarmButton.Text = "Set";
-            this.repeatAlarmButton.UseVisualStyleBackColor = true;
-            this.repeatAlarmButton.Click += new System.EventHandler(this.repeatAlarmButton_Click);
+            this.setAlarmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setAlarmButton.Location = new System.Drawing.Point(185, 219);
+            this.setAlarmButton.Name = "setAlarmButton";
+            this.setAlarmButton.Size = new System.Drawing.Size(191, 46);
+            this.setAlarmButton.TabIndex = 28;
+            this.setAlarmButton.Text = "Set";
+            this.setAlarmButton.UseVisualStyleBackColor = true;
+            this.setAlarmButton.Click += new System.EventHandler(this.setAlarmButton_Click);
             // 
             // repeatingAlarmPicker
             // 
@@ -70,6 +71,7 @@
             this.Sun.TabStop = true;
             this.Sun.Text = "Sunday";
             this.Sun.UseVisualStyleBackColor = true;
+            this.Sun.Visible = false;
             // 
             // Sat
             // 
@@ -81,6 +83,7 @@
             this.Sat.TabStop = true;
             this.Sat.Text = "Saturday";
             this.Sat.UseVisualStyleBackColor = true;
+            this.Sat.Visible = false;
             // 
             // Fri
             // 
@@ -92,6 +95,7 @@
             this.Fri.TabStop = true;
             this.Fri.Text = "Friday";
             this.Fri.UseVisualStyleBackColor = true;
+            this.Fri.Visible = false;
             // 
             // Thu
             // 
@@ -103,6 +107,7 @@
             this.Thu.TabStop = true;
             this.Thu.Text = "Thursday";
             this.Thu.UseVisualStyleBackColor = true;
+            this.Thu.Visible = false;
             // 
             // Wed
             // 
@@ -114,6 +119,7 @@
             this.Wed.TabStop = true;
             this.Wed.Text = "Wednesday";
             this.Wed.UseVisualStyleBackColor = true;
+            this.Wed.Visible = false;
             // 
             // Tue
             // 
@@ -125,6 +131,7 @@
             this.Tue.TabStop = true;
             this.Tue.Text = "Tuesday";
             this.Tue.UseVisualStyleBackColor = true;
+            this.Tue.Visible = false;
             // 
             // Mon
             // 
@@ -136,6 +143,7 @@
             this.Mon.TabStop = true;
             this.Mon.Text = "Monday";
             this.Mon.UseVisualStyleBackColor = true;
+            this.Mon.Visible = false;
             // 
             // Daily
             // 
@@ -147,12 +155,25 @@
             this.Daily.TabStop = true;
             this.Daily.Text = "Daily";
             this.Daily.UseVisualStyleBackColor = true;
+            this.Daily.Visible = false;
             // 
-            // RepeatAlarmForm
+            // repeatCheckbox
+            // 
+            this.repeatCheckbox.AutoSize = true;
+            this.repeatCheckbox.Location = new System.Drawing.Point(37, 12);
+            this.repeatCheckbox.Name = "repeatCheckbox";
+            this.repeatCheckbox.Size = new System.Drawing.Size(76, 21);
+            this.repeatCheckbox.TabIndex = 39;
+            this.repeatCheckbox.Text = "Repeat";
+            this.repeatCheckbox.UseVisualStyleBackColor = true;
+            this.repeatCheckbox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // SetAlarmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 392);
+            this.ClientSize = new System.Drawing.Size(659, 488);
+            this.Controls.Add(this.repeatCheckbox);
             this.Controls.Add(this.Daily);
             this.Controls.Add(this.Sun);
             this.Controls.Add(this.Sat);
@@ -161,9 +182,9 @@
             this.Controls.Add(this.Wed);
             this.Controls.Add(this.Tue);
             this.Controls.Add(this.Mon);
-            this.Controls.Add(this.repeatAlarmButton);
+            this.Controls.Add(this.setAlarmButton);
             this.Controls.Add(this.repeatingAlarmPicker);
-            this.Name = "RepeatAlarmForm";
+            this.Name = "SetAlarmForm";
             this.Text = "Repeating Alarm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -172,7 +193,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button repeatAlarmButton;
+        private System.Windows.Forms.Button setAlarmButton;
         private System.Windows.Forms.DateTimePicker repeatingAlarmPicker;
         private System.Windows.Forms.RadioButton Sun;
         private System.Windows.Forms.RadioButton Sat;
@@ -182,5 +203,6 @@
         private System.Windows.Forms.RadioButton Tue;
         private System.Windows.Forms.RadioButton Mon;
         private System.Windows.Forms.RadioButton Daily;
+        private System.Windows.Forms.CheckBox repeatCheckbox;
     }
 }

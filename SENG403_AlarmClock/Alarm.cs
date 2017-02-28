@@ -13,36 +13,46 @@ namespace SENG403_AlarmClock
         private DateTime defaultAlarmTime; //default time (for repeated alarms)
         private DateTime notifyTime; //when the alarm should go off after being snoozed
         private double snoozeTime;
-        SoundPlayer alarmSound;
-        private int repeatIntervalDays = -1; //how many days before alarm goes off
+        private SoundPlayer alarmSound;
+        private int repeatIntervalDays; //how many days before alarm goes off
+        private bool enabled = false;
 
-        public static Alarm createDailyAlarm(DateTime alarmTime)
+        public static Alarm createDailyAlarm(DateTime alarmTime, double snoozeTime)
         {
             TimeSpan ts = new TimeSpan(alarmTime.Hour, alarmTime.Minute, alarmTime.Second);
             DateTime dt = DateTime.Today.Add(ts);
-            Console.WriteLine(dt);
-            return new Alarm(dt, 1);
+            return new Alarm(dt, 1, snoozeTime);
         }
 
         public static Alarm createWeeklyAlarm(DayOfWeek day, DateTime alarmTime)
         {
             return null;
         }
-        
-        public Alarm(DateTime alarmTime, int repeatInterval)
+
+        //create an alarm which is set to disabled by default
+        public Alarm() {}
+
+        public bool isEnabled()
         {
-            defaultAlarmTime = notifyTime = alarmTime;
+            return enabled;
+        }
+        
+        public Alarm(DateTime alarmTime, int repeatInterval, double snoozeTime)
+        {
+            defaultAlarmTime = notifyTime  = alarmTime;
             this.repeatIntervalDays = repeatInterval;
+            this.snoozeTime = snoozeTime; 
+
         }
 
         /// <summary>
         /// Alarm class constructor, takes in path filename for sound file
         /// </summary>
         /// <param name="alarmFile"></param>
-        public Alarm(string alarmFile)
+        public Alarm(string alarmFile, double snoozeTime)
         {
             alarmSound = new SoundPlayer(alarmFile);
-            snoozeTime = 0.1;
+            this.snoozeTime =snoozeTime;
         }
 
         /// <summary>
@@ -67,8 +77,7 @@ namespace SENG403_AlarmClock
         /// <param name="newAlarm"></param>
         public Alarm(Alarm newAlarm)
         {
-            
-            this.snoozeTime = newAlarm.GetSnoozeTime();
+            snoozeTime = newAlarm.GetSnoozeTime();
         }
 
         /// <summary>
@@ -90,13 +99,43 @@ namespace SENG403_AlarmClock
             this.snoozeTime = snoozeMinutes;
         }
 
+        internal void setDailyAlarm(DateTime alarmTime)
+        {
+            enabled = true;
+            repeatIntervalDays = 1;
+            TimeSpan ts = new TimeSpan(alarmTime.Hour, alarmTime.Minute, alarmTime.Second);
+            DateTime dt = DateTime.Today.Add(ts);
+            defaultAlarmTime = dt;
+            if (defaultAlarmTime.CompareTo(DateTime.Now) <= 0)
+                defaultAlarmTime.AddDays(repeatIntervalDays);
+            notifyTime = defaultAlarmTime;
+        }
+
+        internal void setWeeklyAlarm(DayOfWeek day, DateTime alarmTime)
+        {
+            enabled = true;
+            repeatIntervalDays = 7;
+            TimeSpan ts = new TimeSpan(alarmTime.Hour, alarmTime.Minute, alarmTime.Second);
+            defaultAlarmTime = DateTime.Today.AddDays(day - DateTime.Now.DayOfWeek).Add(ts);
+            if (defaultAlarmTime.CompareTo(DateTime.Now) <= 0)
+                defaultAlarmTime.AddDays(repeatIntervalDays);
+            notifyTime = defaultAlarmTime;
+        }
+
+        internal void setOneTimeAlarm(DateTime dt)
+        {
+            enabled = true;
+            repeatIntervalDays = -1;
+            defaultAlarmTime = notifyTime = dt;
+        }
+
         /// <summary>
         /// Snooze an existing alarm by adding minutes until next alarm time
         /// </summary>
         /// <param name="currentTime"></param>
         public void Snooze(DateTime currentTime)
-        {
- 
+        { 
+            defaultAlarmTime = currentTime.AddMinutes(snoozeTime);
         }
 
         /// <summary>
@@ -119,8 +158,19 @@ namespace SENG403_AlarmClock
 
         public override string ToString()
         {
-            return "Default Alarm Time: " + defaultAlarmTime + " Snooze Time: " + snoozeTime + 
-                " Repeat Interval: " + repeatIntervalDays;
+            if (repeatIntervalDays == -1)
+            {
+                return defaultAlarmTime.ToString("hh:mm:ss tt, MM/dd");
+            }
+            if (repeatIntervalDays == 1)
+            {
+                return defaultAlarmTime.ToString("hh:mm:ss tt, daily");
+            }
+            if (repeatIntervalDays == 7)
+            {
+                return defaultAlarmTime.ToString("hh:mm:ss tt, weekly");
+            }
+            throw new NotImplementedException("This type of alarm is not supported");
         }
 
         public void update()
@@ -129,7 +179,16 @@ namespace SENG403_AlarmClock
             {
                 defaultAlarmTime = defaultAlarmTime.AddDays(repeatIntervalDays);
                 notifyTime = defaultAlarmTime;
+            } 
+            else
+            {
+                enabled = false;
             }
+        }
+
+        internal void disable()
+        {
+            enabled = false;
         }
     }
 }
