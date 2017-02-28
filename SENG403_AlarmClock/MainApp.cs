@@ -206,6 +206,20 @@ namespace SENG403_AlarmClock
             new SetAlarmForm(this).ShowDialog();
             alarm2_label.Text = alarms[2].ToString();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            label1.Visible = !label1.Visible;
+            alarm0_label.Visible = !alarm0_label.Visible;
+            alarm1_label.Visible = !alarm1_label.Visible;
+            alarm2_label.Visible = !alarm2_label.Visible;
+            edit0.Visible = !edit0.Visible;
+            edit1.Visible = !edit1.Visible;
+            edit2.Visible = !edit2.Visible;
+            cancel0.Visible = !cancel0.Visible;
+            cancel1.Visible = !cancel1.Visible;
+            cancel2.Visible = !cancel2.Visible;
+        }
     }
 
 }
