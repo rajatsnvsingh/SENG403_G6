@@ -17,3 +17,6 @@ C:\Users\alexander.thompson\Source\Repos\403Clock\SENG403_AlarmClock\obj\Debug\S
 C:\Users\alexander.thompson\Source\Repos\403Clock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.Properties.Resources.resources
 C:\Users\alexander.thompson\Source\Repos\403Clock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.csproj.GenerateResource.Cache
 C:\Users\tcai\documents\visual studio 2015\Projects\SENG403_AlarmClock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.Form2.resources
+C:\Users\alexander.thompson\Source\Repos\SENG403Clock\SENG403_AlarmClock\bin\Debug\SENG403_AlarmClock.exe.config
+C:\Users\alexander.thompson\Source\Repos\SENG403Clock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.exe
+C:\Users\alexander.thompson\Source\Repos\SENG403Clock\SENG403_AlarmClock\obj\Debug\SENG403_AlarmClock.pdb
