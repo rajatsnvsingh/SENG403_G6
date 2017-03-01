@@ -10,10 +10,10 @@ namespace SENG403_AlarmClock
     public class Alarm
     {
         //instance variables
-        private DateTime defaultAlarmTime; //default time (for repeated alarms)
+        private DateTime defaultAlarmTime; //default time (for repeated alarms) - this should only be changed by user
         private DateTime notifyTime; //when the alarm should go off after being snoozed
-        private double snoozeTime;
-        private SoundPlayer alarmSound;
+        private double snoozeTime = 1.0;
+        private SoundPlayer alarmSound = new SoundPlayer(@"alarm.wav");
         private int repeatIntervalDays; //how many days before alarm goes off
         private bool enabled = false;
 
@@ -30,18 +30,18 @@ namespace SENG403_AlarmClock
         }
 
         //create an alarm which is set to disabled by default
-        public Alarm() {}
+        public Alarm() { }
 
         public bool isEnabled()
         {
             return enabled;
         }
-        
+
         public Alarm(DateTime alarmTime, int repeatInterval, double snoozeTime)
         {
-            defaultAlarmTime = notifyTime  = alarmTime;
+            defaultAlarmTime = notifyTime = alarmTime;
             this.repeatIntervalDays = repeatInterval;
-            this.snoozeTime = snoozeTime; 
+            this.snoozeTime = snoozeTime;
 
         }
 
@@ -52,7 +52,7 @@ namespace SENG403_AlarmClock
         public Alarm(string alarmFile, double snoozeTime)
         {
             alarmSound = new SoundPlayer(alarmFile);
-            this.snoozeTime =snoozeTime;
+            this.snoozeTime = snoozeTime;
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace SENG403_AlarmClock
         /// <param name="newTime"></param>
         public void SetTime(DateTime newTime)
         {
-            
+
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace SENG403_AlarmClock
         /// <param name="snoozeMinutes"></param>
         public void setSnooze(double snoozeMinutes)
         {
-            
+
             this.snoozeTime = snoozeMinutes;
         }
 
@@ -134,8 +134,10 @@ namespace SENG403_AlarmClock
         /// </summary>
         /// <param name="currentTime"></param>
         public void Snooze(DateTime currentTime)
-        { 
-            defaultAlarmTime = currentTime.AddMinutes(snoozeTime);
+        {
+            alarmSound.Stop();
+            notifyTime = currentTime.AddMinutes(snoozeTime);
+            Console.WriteLine(notifyTime);
         }
 
         /// <summary>
@@ -144,7 +146,7 @@ namespace SENG403_AlarmClock
         /// <returns></returns>
         public DateTime? GetTime()
         {
-            return defaultAlarmTime;
+            return notifyTime;
         }
 
         /// <summary>
@@ -170,7 +172,7 @@ namespace SENG403_AlarmClock
             {
                 return defaultAlarmTime.ToString("hh:mm:ss tt, weekly");
             }
-            throw new NotImplementedException("This type of alarm is not supported");
+            return "Not Set";
         }
 
         public void update()
@@ -179,7 +181,7 @@ namespace SENG403_AlarmClock
             {
                 defaultAlarmTime = defaultAlarmTime.AddDays(repeatIntervalDays);
                 notifyTime = defaultAlarmTime;
-            } 
+            }
             else
             {
                 enabled = false;
@@ -189,6 +191,11 @@ namespace SENG403_AlarmClock
         internal void disable()
         {
             enabled = false;
+        }
+
+        internal void setSound(string fileName)
+        {
+            alarmSound = new SoundPlayer(fileName);
         }
     }
 }

@@ -38,6 +38,7 @@ namespace SENG403_AlarmClock
             {
                 if (alarm.isEnabled() && currentTime.CompareTo(alarm.GetTime()) >= 0)
                 {
+                    alarm.play();
                     dismissAlarmButton.Visible = true;
                     snoozeButton.Visible = true;
                     alarmActivatedLabel.Visible = true;
@@ -64,9 +65,10 @@ namespace SENG403_AlarmClock
         {
             alarmActivatedLabel.Visible = false;
             snoozeButton.Visible = false;
+            dismissAlarmButton.Visible = false;
             
             foreach (Alarm alarm in alarms) {
-
+                alarm.stop();
                 alarm.Snooze(currentTime);
             }
         }
@@ -121,6 +123,7 @@ namespace SENG403_AlarmClock
                 {
                     if (currentTime.CompareTo(alarm.GetTime()) >= 0 && alarm.isEnabled())
                     {
+                        alarm.stop();
                         alarm.update();
                     }
                 }
@@ -219,6 +222,17 @@ namespace SENG403_AlarmClock
             cancel0.Visible = !cancel0.Visible;
             cancel1.Visible = !cancel1.Visible;
             cancel2.Visible = !cancel2.Visible;
+        }
+
+        private void alarmSoundButton_Click(object sender, EventArgs e)
+        {
+            if (alarmSoundDialog.ShowDialog() == DialogResult.OK)
+            {
+                foreach (Alarm a in alarms)
+                {
+                    a.setSound(alarmSoundDialog.FileName);
+                }
+            }
         }
     }
 
