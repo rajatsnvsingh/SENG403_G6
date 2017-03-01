@@ -34,8 +34,11 @@ Features
 Branches
 --------
 Master - Up to date version of the code for release.
+
 cancelAlarm - Branch on which code is development, testing and feature experimentation done here before
                 beingh pushed to the master.
+                
+sprint2demo - Branch with the code used for sprint 2 demo
 
 Further Development
 -------------------
